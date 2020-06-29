@@ -41,4 +41,4 @@ and then
 8. cd back to the root folder and run `npm start` to run locally or `npm run-script build` and deploy the generated ./build/plugin-dialpad.js to [twilio assests](https://www.twilio.com/console/assets/public) to include plugin with hosted Flex. Also, you want to use Twilio Serverless, just run `npm run deploy` to send your plugin directly to your Flex.
 
 
-Note: as the bulk update is updating many workers at the same time, for large lists of workers, it is possible to hit API limits. To handle that, you can change the `worker-bulk-update` implementing some strategy to send the requests with some timeout between them.
+**Note**: as the bulk update is updating many workers at the same time, for large lists of workers, it is possible to hit API limits. To handle that, you can change the `worker-bulk-update` implementing some strategy to send the requests with some timeout between them.
