@@ -19,3 +19,8 @@ This Flex plugin adds a feature to apply multiple skills to multiple agents at t
 3.  run `npm install`
 
 4. cd back to the root folder and run `npm start` to run locally or `npm run-script build` and deploy the generated ./build/plugin-dialpad.js to [twilio assests](https://www.twilio.com/console/assets/public) to include plugin with hosted Flex. Also, you want to use Twilio Serverless, just run `npm run deploy` to send your plugin directly to your Flex.
+
+
+## Todo
+
+1. Create Serverless Function to apply skills to multiple agents. As it stands for now, just the front-end is ready.
