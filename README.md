@@ -7,7 +7,7 @@ This Flex plugin adds a feature to apply multiple skills to multiple agents at t
 `data.attributes.team == "Leads"`. As this notation is the same used in Flex Sync Live Query, please refer to this [documentation](https://www.twilio.com/docs/sync/live-query) for more details. 
 
 <p align="center">
-    <img src="screenshots/example.png?raw=true" width="300" >
+    <img src="screenshots/example.png?raw=true" width="301" >
 </p>
 
 ## How to use
