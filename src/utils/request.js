@@ -1,0 +1,25 @@
+import * as Flex from '@twilio/flex-ui';
+
+const request = async (path, params) =>{
+    const body = {
+        ...params,
+        Token: Flex.Manager.getInstance().store.getState().flex.session.ssoTokenPayload.token
+    };
+
+    const options = {
+        method: 'POST',
+        body: new URLSearchParams(body),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        }
+    };
+
+    const { REACT_APP_SERVICE_BASE_URL } = process.env;
+
+    const resp = await fetch(`${REACT_APP_SERVICE_BASE_URL}/${path}`, options)
+    return (await resp.json())
+}
+
+export {
+    request
+}

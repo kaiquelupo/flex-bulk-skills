@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { debounce } from "lodash";
+import { request } from "../../utils/request";
 
 const styles = {
     contained: {
@@ -79,10 +80,9 @@ class BulkSkills extends React.Component {
 
     updateWorkersAttributes = () => {
 
+        const { workerAttributes } = this.props;
 
         this.setState({ showMessage: "Loading" });
-
-        const sid = this.props.worker.sid;
 
         const workers = Object.keys(this.state.workers).reduce((pr, cur) => {
             const worker = this.state.workers[cur];
@@ -97,10 +97,18 @@ class BulkSkills extends React.Component {
             return pr;
         }, []);
 
-        // alert("Clicked")
+        request("workers-bulk-update", {
+            workers: JSON.stringify(workers),
+            workerAttributes: JSON.stringify(workerAttributes)
+        }).then(() => {
 
-    
-        setTimeout(() => this.setState({ showMessage: "Saved" }), 1000);
+            setTimeout(() => this.setState({ showMessage: "Saved" }), 1000);
+
+        }).catch(() => {
+
+            setTimeout(() => this.setState({ showMessage: "Error" }), 1000);
+
+        });
 
     }
 
@@ -186,7 +194,7 @@ class BulkSkills extends React.Component {
                             contained: classes.contained
                         }}
                         onClick={this.updateWorkersAttributes}
-                        disabled={error != null || this.state.showMessage}
+                        disabled={error != null || this.state.showMessage !== null}
                     >
                         Apply
                     </Button>
